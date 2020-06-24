@@ -9,7 +9,8 @@ export default class InputReadOnly extends Component {
       <div className={css.inputReadOnly}>
         <label>
           {description}
-          <CurrencyInput
+          <input
+            type="text"
             decimalSeparator=","
             thousandSeparator="."
             prefix="R$ "
@@ -17,6 +18,14 @@ export default class InputReadOnly extends Component {
             value={value}
             style={style}
           />
+          {/*<CurrencyInput
+            decimalSeparator=","
+            thousandSeparator="."
+            prefix="R$ "
+            readOnly
+            value={value}
+            style={style}
+          />*/}
         </label>
       </div>
     );

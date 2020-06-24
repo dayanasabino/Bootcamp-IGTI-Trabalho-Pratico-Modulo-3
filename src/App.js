@@ -9,7 +9,7 @@ export default class App extends Component {
     super();
 
     this.state = {
-      salarioBruto: 5000,
+      salarioBruto: 0,
       baseINSS: 0,
       descINSS: 0,
       percDescInss: 0,
@@ -21,14 +21,19 @@ export default class App extends Component {
   }
 
   handleChange = (event) => {
-    const valueInserted = event.target.value;
+    console.log(`handleChange ${event}`);
+    const valueInserted = event;
     this.calculateValues(valueInserted);
-    console.log(valueInserted);
+    console.log(`handleChange ${this.state.salarioBruto}`);
+
+    console.log(`handleChange ${this.state.salarioBruto}`);
   };
 
   calculateValues = (salarioBruto) => {
+    console.log('calculateValues INICIO');
     const calc = calculateSalaryFrom(salarioBruto);
-    this.setState = {
+    this.setState({
+      salarioBruto,
       baseINSS: calc.baseINSS,
       descINSS: calc.discountINSS,
       //percDescInss:,
@@ -36,8 +41,13 @@ export default class App extends Component {
       descIRPF: calc.discountIRPF,
       salarioLiquido: calc.netSalary,
       //percSalarioLiquido: 0,
-    };
+    });
     console.log(calc);
+    console.log(`D ${this.state.baseINSS}`);
+    console.log(`D ${this.state.descINSS}`);
+    console.log(`D ${this.state.baseIRPF}`);
+    console.log(`D ${this.state.descIRPF}`);
+    console.log(`D ${this.state.salarioLiquido}`);
   };
 
   render() {
